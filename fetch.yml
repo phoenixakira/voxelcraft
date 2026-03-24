@@ -1,0 +1,14 @@
+name: Remote Fetch
+on: [workflow_dispatch]
+jobs:
+  download:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch Game
+        run: |
+          curl -L -o voxelcraft.zip https://phoenixakira.itch.io
+      - name: Upload to GitHub
+        uses: actions/upload-artifact@v4
+        with:
+          name: voxelcraft-game
+          path: voxelcraft.zip
